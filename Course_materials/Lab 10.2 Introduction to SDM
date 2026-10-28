@@ -1,0 +1,32 @@
+Lab Setup Instructions – Warm Up
+Step 1: Install R
+Mac: Go to https://cran.r-project.org/bin/macosx/big-sur-arm64/base/ and download the latest version (4.5.3). Choose the installer that matches your chip (Apple Silicon for M1/M2/M3/M4, Intel for older Macs). Open the downloaded file and follow the prompts.
+Windows: Go to https://cran.r-project.org/bin/windows/base/old/ and download version 4.5.3. Run the installer and accept the defaults.
+Step 2: Install RStudio
+Go to https://posit.co/downloads and download RStudio Desktop (free). Install R first, then RStudio. Open RStudio afterward to confirm it launches.
+Step 3: Download the lab folder
+Download the folder “Sci_Comp26” from the Box link and save it somewhere easy to find, like your Desktop. Note the full path to the folder, because you’ll need it in the next step.
+Step 4: Install the packages
+Open RStudio and run the following in the Console. You only need to do this once.
+# CRAN packages
+install.packages(c("terra", "rgbif", "robis", "RJSONIO", "ecospat",
+                   "blockCV", "xgboost", "devtools", "sf", "ggplot2"))
+# Bio-ORACLE package from GitHub
+devtools::install_github("bio-oracle/biooracler")
+# SDM package from the lab folder: replace the path with where YOUR Sci_Comp26 folder is
+install.packages("/path/to/Sci_Comp26/bDSSDMTools_0.0.0.9000.tar.gz",
+                 repos = NULL, type = "source")
+Tip: to get the file path, find bDSSDMTools_0.0.0.9000.tar.gz in your folder. On Mac, right-click it, hold Option, and choose “Copy as Pathname.” On Windows, hold Shift, right-click, and choose “Copy as path” (then change \ to / and remove the quotation marks if needed.
+Step 5: Load the packages
+Run this at the start of every R session:
+library(terra)
+library(bDSSDMTools)
+library(ggplot2)
+library(sf)
+If this runs without errors, you’re ready for the lab.
+Troubleshooting
+•Installation errors on Mac: Some packages need Apple’s command line tools. Run xcode-select --install in the Terminal, then try again.
+•Installation errors on Windows: Some packages need Rtools. Install the version matching your R version from https://cran.r-project.org/bin/windows/Rtools/.
+•“Package not found” or “there is no package called...”: Re-run the install line for that package and check for typos.
+•If asked “Do you want to install from sources?”: Type no (binary versions install faster and with fewer problems).
+•File paths in the lab script (such as /Users/new/Desktop/Sci_Comp26/...) must be changed to where the folder is on your computer.
